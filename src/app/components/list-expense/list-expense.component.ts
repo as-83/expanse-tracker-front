@@ -25,7 +25,7 @@ export class ListExpenseComponent implements OnInit {
   // tslint:disable-next-line:typedef
   listExpenses() {
     this._expenseService.getExpenses().subscribe(
-      data => this.expenses = data
+      data => this.expenses = this.filterExpenses(data)
     );
   }
 
@@ -36,10 +36,21 @@ export class ListExpenseComponent implements OnInit {
     }).sort((a, b) => {
       if (this.filters.sortBy === 'Name') {
         return a.name.toLowerCase() < b.name.toLowerCase() ? -1 : 1;
+      }else if (this.filters.sortBy === `Name desc`) {
+        return a.name.toLowerCase() > b.name.toLowerCase() ? -1 : 1;
       }else if (this.filters.sortBy === 'Amount') {
+        return a.amount <= b.amount ? -1 : 1;
+      }else if (this.filters.sortBy === `Amount desc`) {
         return a.amount > b.amount ? -1 : 1;
       }
     });
   }
 
+  deleteExpanse(id: number): void {
+    this._expenseService.deleteExpanse(id).subscribe(
+      data => {
+        console.log('deleted response', data);
+        this.listExpenses();
+      });
+  }
 }

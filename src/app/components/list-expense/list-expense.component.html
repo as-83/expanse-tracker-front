@@ -1,6 +1,32 @@
-<div *ngFor="let expense of expenses" align="center">
-  <h3>{{expense.name}}</h3>
-  <p>{{expense.amount}}</p>
-  <p>{{expense.description}}</p>
-  <hr/>
-</div>
+
+<a class="btn btn-info" routerLink="/addexpense">Добавить покупку</a>
+<input  class="form-control" type="text" [(ngModel)]="filters.keyword" placeholder="Поиск" (input)="listExpenses()"/>
+<select  class="form-control"  name="sortBy" [(ngModel)]="filters.sortBy" (change)="listExpenses()">
+  <option>Name</option>
+  <option>Name desc</option>
+  <option>Amount</option>
+  <option>Amount desc</option>
+</select>
+<table class="table table-striped">
+  <thead>
+  <tr>
+    <th scope="col">Название</th>
+    <th scope="col">Цена</th>
+    <th scope="col">Комментарий</th>
+    <th scope="col">Дата</th>
+    <th scope="col"></th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let expense of expenses" >
+    <td><b>{{expense.name}}</b></td>
+    <td>{{expense.amount }} руб.</td>
+    <td>{{expense.description}}</td>
+    <td>{{expense.localDate}}</td>
+    <td><a class="btn btn-info" routerLink="/editexpense/{{expense.id}}">Изменить</a>
+      <button class="btn  btn-primary ml-3" (click)="deleteExpanse(expense.id)">Удалить</button></td>
+  </tr>
+
+  </tbody>
+</table>
+

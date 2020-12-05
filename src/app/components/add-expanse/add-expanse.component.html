@@ -1,0 +1,10 @@
+<form class="form-group" (ngSubmit)="saveExpense()">
+
+  <input class="form-control" type="text" name="name" [(ngModel)]="expense.name" placeholder="Название товара"/><br>
+  <input class="form-control" type="text" name="amount" [(ngModel)]="expense.amount" placeholder="Цена товара"/><br>
+  <input class="form-control" type="date" name="localDate" [(ngModel)]="expense.localDate" /><br>
+  <textarea class="form-control" type="text" name="description" [(ngModel)]="expense.description" placeholder="Описание"></textarea><br>
+  <button class="btn  btn-primary" type="submit">Сохранить</button>
+  <button *ngIf="expense.id" class="btn  btn-primary ml-3" (click)="deleteExpanse(expense.id)">Удалить</button>
+
+</form>
