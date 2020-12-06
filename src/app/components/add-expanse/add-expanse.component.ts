@@ -24,6 +24,8 @@ export class AddExpanseComponent implements OnInit {
       this._expenseService.getExpense(id).subscribe(
         data => this.expense = data
       );
+    }else{
+      this.expense.localDate = new Date().toISOString().split('T')[0];
     }
   }
 
@@ -32,7 +34,7 @@ export class AddExpanseComponent implements OnInit {
   this._expenseService.saveExpense(this.expense).subscribe(
     data => {
       // console.log('response', data);
-      this._router.navigateByUrl('/expenses');
+      this._router.navigateByUrl('/');
     }
   );
   }
@@ -41,7 +43,7 @@ export class AddExpanseComponent implements OnInit {
     this._expenseService.deleteExpanse(id).subscribe(
       data => {
         // console.log('deleted response', data);
-        this._router.navigateByUrl('/expenses');
+        this._router.navigateByUrl('/');
       });
   }
 }

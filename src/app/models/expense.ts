@@ -3,5 +3,5 @@ export class Expense {
   name: string;
   amount: number;
   description: string;
-  localDate: Date;
+  localDate: string;
 }

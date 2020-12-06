@@ -1,13 +1,21 @@
+<div class="row">
 
-<a class="btn btn-info" routerLink="/addexpense">Добавить покупку</a>
-<input  class="form-control" type="text" [(ngModel)]="filters.keyword" placeholder="Поиск" (input)="listExpenses()"/>
-<select  class="form-control"  name="sortBy" [(ngModel)]="filters.sortBy" (change)="listExpenses()">
-  <option>Name</option>
-  <option>Name desc</option>
-  <option>Amount</option>
-  <option>Amount desc</option>
-</select>
-<table class="table table-striped">
+  <div class="col-3  mt-3">
+      <a class="btn btn-info" routerLink="/addexpense">Добавить покупку</a>
+      <input  class="form-control my-3" type="text" [(ngModel)]="filters.keyword" placeholder="Поиск по названию" (input)="listExpenses()"/>
+      <select  class="form-control mb-3"  name="sortBy" [(ngModel)]="filters.sortBy" (change)="listExpenses()">
+        <option value="5">Дата &#8595;</option>
+        <option value="6">Дата &#8593;</option>
+        <option value="1">Название &#8593;</option>
+        <option value="2">Название &#8595;</option>
+        <option value="3">Цена &#8593;</option>
+        <option value="4">Цена &#8595;</option>
+      </select>
+
+  </div>
+</div>
+
+<table class="table table-striped ">
   <thead>
   <tr>
     <th scope="col">Название</th>

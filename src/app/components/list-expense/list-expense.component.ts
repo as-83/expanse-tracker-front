@@ -13,7 +13,7 @@ export class ListExpenseComponent implements OnInit {
 
   filters = {
     keyword: '',
-    sortBy: 'Name'
+    sortBy: `5`
   };
   // tslint:disable-next-line:variable-name
   constructor(private _expenseService: ExpenseService) { }
@@ -34,14 +34,18 @@ export class ListExpenseComponent implements OnInit {
     return expenses.filter((e) => {
       return e.name.toLowerCase().includes(this.filters.keyword.toLowerCase());
     }).sort((a, b) => {
-      if (this.filters.sortBy === 'Name') {
+      if (this.filters.sortBy === `1`) {
         return a.name.toLowerCase() < b.name.toLowerCase() ? -1 : 1;
-      }else if (this.filters.sortBy === `Name desc`) {
+      }else if (this.filters.sortBy === `2`) {
         return a.name.toLowerCase() > b.name.toLowerCase() ? -1 : 1;
-      }else if (this.filters.sortBy === 'Amount') {
+      }else if (this.filters.sortBy === `3`) {
         return a.amount <= b.amount ? -1 : 1;
-      }else if (this.filters.sortBy === `Amount desc`) {
+      }else if (this.filters.sortBy === `4`) {
         return a.amount > b.amount ? -1 : 1;
+      }else if (this.filters.sortBy === `5`) {
+        return a.localDate > b.localDate ? -1 : 1;
+      }else if (this.filters.sortBy === `6`) {
+        return a.localDate > b.localDate ? 1 : -1;
       }
     });
   }

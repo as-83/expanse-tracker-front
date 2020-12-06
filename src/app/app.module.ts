@@ -9,7 +9,7 @@ import { ListExpenseComponent } from './components/list-expense/list-expense.com
 import { AddExpanseComponent } from './components/add-expanse/add-expanse.component';
 
 const routs: Routes = [
-  {path: 'expenses', component: ListExpenseComponent},
+  {path: '', component: ListExpenseComponent},
   {path: 'addexpense', component: AddExpanseComponent},
   {path: 'editexpense/:id', component: AddExpanseComponent},
   {path: '', redirectTo: '/expenses', pathMatch: 'full'},
